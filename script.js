@@ -40,19 +40,32 @@ async function getBooks() {
 function displayBookLoanRequestInfo(title) {
 
     borrowBookInfoContainerElement.innerHTML += 
-        `<h2>${title} is avaible</h2>`
+        `<h2>${title} is available</h2>`
 }
 
 // borrowBook takes a "book title" as argument, and then displays if the book is available for rent or not
 
 async function borrowBook(title) {
-    let response = await fetch("http://localhost:5225/loan/borrow")
+
+    // searchTermObject contains the title (which we get from this function's parameter)
+    let searchTermObject = {
+        Title: title
+    }
+
+    let response = await fetch("http://localhost:5225/loan/borrow", {
+        method: "POST",
+        body: JSON.stringify(searchTermObject),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
 
     console.log(response)
     // assuming request above went well, get the data...
-    let data = response.json()
+    let data = await response.json()
 
-    displayBookLoanRequestInfo(data)
+    //console.log(data)
+    displayBookLoanRequestInfo(data.title)
 }
 
-borrowBook("Foundation")
+//borrowBook("Foundation")
