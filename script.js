@@ -1,8 +1,6 @@
-// 1. get the container element:
+// 1. get the container elements:
 let booksContainerElement = document.getElementById("books-container")
-
-
-// 2. display some new html content:
+let borrowBookInfoContainerElement = document.getElementById("borrow-book-info-container")
 
 // Display the given book in the booksContainerElement
 function displayBookInfo(bookObject) {
@@ -15,24 +13,6 @@ function displayBookInfo(bookObject) {
         </div>
         `
 }
-
-
-
-/* 
-// JSON string
-let libraryData = '[{"title":"Foundation"},{"title":"Martian"}]'
-
-// Convert JSON to a JS object:
-let convertedLibraryData =  JSON.parse(libraryData)
-
-// Loop through the object and do something with the data
-for (let book of convertedLibraryData) {
-    console.log(book)
-    displayBookInfo(book)
-}
-
- */
-
 
 /*
     get books connects to our local server, gets data and then calls a display function to display them on the page
@@ -53,4 +33,26 @@ async function getBooks() {
 }
 
 
-getBooks()
+//getBooks()
+
+
+// Display if hte given books is available for rent or not
+function displayBookLoanRequestInfo(title) {
+
+    borrowBookInfoContainerElement.innerHTML += 
+        `<h2>${title} is avaible</h2>`
+}
+
+// borrowBook takes a "book title" as argument, and then displays if the book is available for rent or not
+
+async function borrowBook(title) {
+    let response = await fetch("http://localhost:5225/loan/borrow")
+
+    console.log(response)
+    // assuming request above went well, get the data...
+    let data = response.json()
+
+    displayBookLoanRequestInfo(data)
+}
+
+borrowBook("Foundation")
