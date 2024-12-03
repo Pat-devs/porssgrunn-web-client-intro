@@ -59,6 +59,7 @@ function displayBookLoanRequestInfo(title) {
     borrowBookInfoContainerElement.innerHTML += 
         `<h2>${title} is available</h2>`
 }
+greet
 
 // borrowBook takes a "book title" as argument, and then displays if the book is available for rent or not
 
@@ -86,3 +87,38 @@ async function borrowBook(title) {
 }
 
 //borrowBook("Foundation")
+
+
+
+
+// Info on JSDoc
+
+
+/**
+ * Whatever we type here will be displayed when we hover over the funcion name, anywhere in our code
+ */
+function greet() {
+    console.log("Hello world!")
+}
+
+
+/**
+ * Function prints a cussom message in the console
+ * @param {String} message 
+ */
+function greetAdvanced(message) {
+    console.log("Hello " + message)
+}
+
+
+/**
+ * Function sums two numbers
+ * @param {Number} a - Should be a number
+ * @param {String} b 
+ * @returns The sum
+ */
+function sum(a, b) {
+    return a + b
+}
+
+console.log(sum(5,5))
