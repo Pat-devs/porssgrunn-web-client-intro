@@ -16,74 +16,20 @@ function displayBookInfo(bookObject) {
         `
 }
 
-let libraryArray = [
-    {
-        title: "Foundation"
-    },
-    {
-        title: "Martian"
-    },
-    {
-        title: "1984"
-    }
-]
 
+
+
+// JSON string
 let libraryData = '[{"title":"Foundation"},{"title":"Martian"}]'
 
+// Convert JSON to a JS object:
 let convertedLibraryData =  JSON.parse(libraryData)
 
-
-//console.log(convertedLibraryData)
-
-
-const arrayOfObjects = [
-    {
-      id: 1,
-      name: "Alice",
-      age: 25,
-      occupation: "Engineer",
-      stuff: `doSomething() {
-        console.log("Working")
-      }`
-    },
-    {
-      id: 2,
-      name: "Bob",
-      age: 30,
-      occupation: "Designer",
-    },
-    {
-      id: 3,
-      name: "Charlie",
-      age: 28,
-      occupation: "Teacher",
-    },
-    {
-      id: 4,
-      name: "Diana",
-      age: 22,
-      occupation: "Developer",
-    },
-  ];
-
-
-  console.log(arrayOfObjects)
-  
-
-  let convertedArrayOfObjects = JSON.stringify(arrayOfObjects)
-
-  console.log(convertedArrayOfObjects)
-
-  console.log( JSON.parse(convertedArrayOfObjects))
-
-
-  convertedArrayOfObjects[0].doSomething()
-
-
-/* for (let book of libraryArray) {
+// Loop through the object and do something with the data
+for (let book of convertedLibraryData) {
     console.log(book)
     displayBookInfo(book)
-} */
+}
 
 
 
